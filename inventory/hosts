@@ -14,6 +14,9 @@ nomad-server3   ip_address=10.99.0.113
 nomad-client1   ip_address=10.99.0.121
 nomad-client2   ip_address=10.99.0.122
 nomad-client3   ip_address=10.99.0.123
+nomad-client4   ip_address=10.99.0.124
+nomad-client5   ip_address=10.99.0.125
+nomad-client6   ip_address=10.99.0.126
 
 [all:vars]
 ansible_connection=lxd
