@@ -5,14 +5,13 @@ bind_addr = "{{ ansible_eth0.ipv4.address }}"
 client {
   enabled = true
   network_interface = "eth0"
-  node_class="stateless worker"
   meta {
-   {% if ansible_hostname == 'nomad-client1' -%}
-    role = "rp"
-   {% else -%}
-    role = "worker"
-   {% endif %}    
+    role = "persitence"
  }
+ host_volume "db" {
+    path      = "/opt/db"
+    read_only = false
+  }
 }
 
 options {

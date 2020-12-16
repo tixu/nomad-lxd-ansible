@@ -4,8 +4,8 @@
   connection: local
   # set urls as variables
   vars:
-    consul_version: "1.4.0"
-    nomad_version: "0.8.6"
+    consul_version: "1.9.0"
+    nomad_version: "1.0.0"
     traefik_version: "1.7.5"
     consul_url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip"
     nomad_url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
@@ -23,11 +23,11 @@
           type: image
           mode: pull
           server: https://images.linuxcontainers.org
-          alias: ubuntu/bionic/amd64
+          alias: ubuntu/groovy/amd64
         config:
           # nomad clients need some privileges to be able to run docker containers
-          security.nesting: "{{ 'true' if item in ['nomad-client1', 'nomad-client2', 'nomad-client3'] else 'false' }}"
-          security.privileged: "{{ 'true' if item in ['nomad-client1', 'nomad-client2', 'nomad-client3'] else 'false' }}"
+          security.nesting: "{{ 'true' if item in ['nomad-client1', 'nomad-client2', 'nomad-client3','nomad-client4','nomad-client5','nomad-client6','nomad-db1'] else 'false' }}"
+          security.privileged: "{{ 'true' if item in ['nomad-client1', 'nomad-client2', 'nomad-client3','nomad-client4','nomad-client5','nomad-client6','nomad-db1'] else 'false' }}"
         devices:
           # configure network interface
           eth0:
@@ -74,6 +74,11 @@
   roles:
     - consul_client
     - nomad_client
+
+- hosts: nomad_dbs
+  roles:
+     - consul_client
+     - nomad_db
 
 - hosts: proxy
   roles:

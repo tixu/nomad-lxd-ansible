@@ -18,6 +18,10 @@ nomad-client4   ip_address=10.99.0.124
 nomad-client5   ip_address=10.99.0.125
 nomad-client6   ip_address=10.99.0.126
 
+ 
+[nomad_dbs]
+nomad-db1   ip_address=10.99.0.131
+
 [all:vars]
 ansible_connection=lxd
 ansible_python_interpreter=/usr/bin/python3
