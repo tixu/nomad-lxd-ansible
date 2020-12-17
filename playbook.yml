@@ -69,7 +69,10 @@
   roles:
     - consul_client
     - nomad_server
-
+- hosts: vault_servers
+  roles:
+    - consul_client
+    - vault_server
 - hosts: nomad_clients
   roles:
     - consul_client
