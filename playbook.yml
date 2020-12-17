@@ -80,7 +80,3 @@
      - consul_client
      - nomad_db
 
-- hosts: proxy
-  roles:
-    - consul_client
-    - proxy
